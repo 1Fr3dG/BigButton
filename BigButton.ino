@@ -1,7 +1,7 @@
 #include <EEPROM.h>
-
+#include <Keyboard.h>
 const int buttonPin = 9;  // input pin for pushbutton
-const int configMax = 6;  // config slots
+const int configMax = 9;  // config slots
 const int configAddress = 0;  // button mode number, in EEPROM address
 
 char* configNames[] = {
@@ -11,7 +11,10 @@ char* configNames[] = {
   "3. Emergency STOP 3: ESC, Enter.",
   "4. Emergency STOP 4: ESC, tab, Enter.",
   "5. Emergency STOP 5: Ctrl-C, Y, Enter.",
-  "6. Emergency Shutdown Windows: run \"shutdown -s -f -t 0\"."
+  "6. Emergency Shutdown Windows: run \"shutdown -s -f -t 0\".",
+  "7. Next Window: Alt-Tab",
+  "8. Next App (OSX): Cmd-Tab",
+  "9. Next Tab (Byobu): F3"
 };
 
 int previousButtonState = HIGH;   // for checking the state of a pushButton
@@ -79,6 +82,7 @@ void loop() {
         Keyboard.press(KEY_LEFT_CTRL);
         delay(10);
         Keyboard.press('c');
+        delay(300);
         break;
       case 3:
         Keyboard.press(KEY_ESC);
@@ -88,6 +92,7 @@ void loop() {
         Keyboard.press(KEY_RETURN);
         delay(10);
         Keyboard.releaseAll();
+        delay(300);
         break;
       case 4:
         Keyboard.press(KEY_ESC);
@@ -101,6 +106,7 @@ void loop() {
         Keyboard.press(KEY_RETURN);
         delay(10);
         Keyboard.releaseAll();
+        delay(300);
         break;
       case 5:
         Keyboard.press(KEY_LEFT_CTRL);
@@ -116,6 +122,7 @@ void loop() {
         Keyboard.press(KEY_RETURN);
         delay(10);
         Keyboard.releaseAll();
+        delay(300);
         break;
       case 6:
         Keyboard.press(KEY_LEFT_GUI);
@@ -125,6 +132,29 @@ void loop() {
         Keyboard.releaseAll();
         delay(100);
         Keyboard.println("shutdown -s -f -t 0");
+        delay(300);
+        break;
+      case 7:
+        Keyboard.press(KEY_LEFT_ALT);
+        delay(10);
+        Keyboard.press(KEY_TAB);
+        delay(100);
+        Keyboard.releaseAll();
+        delay(300);
+        break;
+      case 8:
+        Keyboard.press(KEY_LEFT_GUI);
+        delay(10);
+        Keyboard.press(KEY_TAB);
+        delay(100);
+        Keyboard.releaseAll();
+        delay(300);
+        break;
+      case 9:
+        Keyboard.press(KEY_F3);
+        delay(100);
+        Keyboard.releaseAll();
+        delay(300);
         break;
       case 0:
       default:

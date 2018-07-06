@@ -72,3 +72,8 @@ Currentlly, the program support 6 modes:
 - 4. Emergency STOP 4: ESC, tab, Enter.
 - 5. Emergency STOP 5: Ctrl-C, Y, Enter.
 - 6. Emergency Shutdown Windows: run "shutdown -s -f -t 0".
+- 7. Next Window: Alt-Tab.
+- 8. Next App (OSX): Cmd-Tab.
+- 9. Next Tab (Byobu): F3.
+- 10. BSOD.
+	- You need set HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\kbdhid\\Parameters\\CrashOnCtrlScroll to 1

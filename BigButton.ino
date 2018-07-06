@@ -14,7 +14,8 @@ char* configNames[] = {
   "6. Emergency Shutdown Windows: run \"shutdown -s -f -t 0\".",
   "7. Next Window: Alt-Tab",
   "8. Next App (OSX): Cmd-Tab",
-  "9. Next Tab (Byobu): F3"
+  "9. Next Tab (Byobu): F3",
+  "10. BSOD: You need set HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\kbdhid\\Parameters\\CrashOnCtrlScroll to 1"
 };
 
 int previousButtonState = HIGH;   // for checking the state of a pushButton
@@ -156,6 +157,16 @@ void loop() {
         Keyboard.releaseAll();
         delay(300);
         break;
+      case 10:
+        Keyboard.press(KEY_RIGHT_CTRL);
+        delay(10);
+        Keyboard.press(71+136);
+        delay(10);
+        Keyboard.press(71+136);
+        delay(10);
+        Keyboard.press(132+136);
+        break;
+
       case 0:
       default:
         Keyboard.press(KEY_RETURN);
